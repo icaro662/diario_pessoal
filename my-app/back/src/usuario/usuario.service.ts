@@ -2,12 +2,11 @@ import { ConflictException, Injectable, InternalServerErrorException } from '@ne
 import { Usuario } from './entity/usuario.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUsuarioDto } from './dto/usuario.dto';
+import { CreateUsuarioDto } from './dto/usuario.cadastro';
+import { LoginUsuarioDto } from './dto/usuario.login';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedException } from '@nestjs/common/exceptions';
-
-
 
 
 @Injectable()
@@ -47,7 +46,7 @@ export class UsuarioService {
            throw new InternalServerErrorException('Erro ao salvar o usuário.')
        }
    }
-   async login(loginDto: CreateUsuarioDto): Promise<{access_token:string}>{
+   async login(loginDto: LoginUsuarioDto): Promise<{access_token:string}>{
        const {email,password} = loginDto;
 
 
@@ -73,7 +72,7 @@ export class UsuarioService {
        };
 
 
-       const accesstoken = await this.jwtService.signAsync(payload);
+       const accesstoken = await this.jwtService.signAsync(payload, process.env.JWT_SECRET ? {secret: process.env.JWT_SECRET} : {});
 
 
        return{

@@ -25,7 +25,7 @@ function Login(){
 
        try {
            const response = await axios.post(
-               'http://localhost:3000/user/login',
+               'http://localhost:3000/usuario/login',
                {
                    email: email,
                    password: password,
@@ -56,42 +56,48 @@ function Login(){
        }
    };
 
-
    return (
-       <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px' }}>
-     <h2>Formulário de Login</h2>
-     <form onSubmit={handleSubmit}>
-       <div style={{ marginBottom: '10px' }}>
-         <label>Email:</label>
-         <input
-           type="email"
-           value={email}
-           onChange={(e) => setEmail(e.target.value)}
-           required
-           style={{ width: '100%', padding: '8px' }}
-         />
-       </div>
-       <div style={{ marginBottom: '10px' }}>
-         <label>Senha:</label>
-         <input
-           type="password"
-           value={password}
-           onChange={(e) => setPassword(e.target.value)}
-           required
-           style={{ width: '100%', padding: '8px' }}
-         />
-       </div>
-       <button type="submit" style={{ padding: '10px 15px' }}>
-         Entrar
-       </button>
-     </form>
+    <div
+      className="form-wrapper"
+      style={{
+        maxWidth: "400px",
+        width: "100%",
+        padding: "20px",
+      }}
+    >
+      <h2>Formulário de Login</h2>
 
+      <form onSubmit={handleSubmit}>
+        <div className="form-content" style={{ marginBottom: "10px" }}>
+          <label>Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{ width: "100%", padding: "8px" }}
+          />
+        </div>
 
-     {message && <p style={{ color: 'green' }}>{message}</p>}
-     {error && <p style={{ color: 'red' }}>{error}</p>}
-   </div>
+        <div className="form-content" style={{ marginBottom: "15px" }}>
+          <label>Senha</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{ width: "100%", padding: "8px" }}
+          />
+        </div>
 
+        <button type="submit" style={{ padding: "10px 15px" }}>
+          Entrar
+        </button>
+      </form>
 
-   );
+      {message && <p style={{ color: "green" }}>{message}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </div>
+  );
 }
 export default Login;

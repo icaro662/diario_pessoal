@@ -6,8 +6,8 @@ import axios from "axios";
 
 function Cadastro() {
     const [nome, setNome] = useState('');
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
 
   
@@ -58,11 +58,11 @@ function Cadastro() {
 
   
    return (
-       <div style={{ maxWidth: '400px', margin: 'auto', padding: '20px' }}>
+       <div className="form-wrapper" style={{ maxWidth: '400px', margin: 'auto', padding: '20px' }}>
            <h2>Formulário de Cadastro</h2>
            <form onSubmit={handleSubmit}>
-               <div style={{ marginBottom: '10px' }}>
-                <label>Nome:</label>
+               <div className="form-contet" style={{ marginBottom: '10px' }}>
+                <label>Nome</label>
                      <input
                             type="nome"
                             value={nome}
@@ -71,8 +71,8 @@ function Cadastro() {
                             style={{ width: '100%', padding: '8px' }}
                    />               
                    </div>  
-               <div style={{ marginBottom: '10px' }}>
-                   <label>Email:</label>
+               <div className="form-content" style={{ marginBottom: '10px' }}>
+                   <label>Email</label>
                    <input
                        type="email"
                        value={email}
@@ -81,8 +81,8 @@ function Cadastro() {
                        style={{ width: '100%', padding: '8px' }}
                    />
                </div>
-               <div style={{ marginBottom: '10px' }}>
-                   <label>Senha:</label>
+               <div className="form-content" style={{ marginBottom: '10px' }}>
+                   <label>Senha</label>
                    <input
                        type="password"
                        value={password}
